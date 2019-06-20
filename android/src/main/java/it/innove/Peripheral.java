@@ -15,9 +15,11 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.ParcelUuid;
-import android.support.annotation.Nullable;
 import android.util.Base64;
 import android.util.Log;
+
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.Callback;
@@ -373,6 +375,7 @@ public class Peripheral extends BluetoothGattCallback {
 		advertisingDataBytes = data;
 	}
 
+	@RequiresApi(api = LOLLIPOP)
 	public void updateData(ScanRecord scanRecord) {
 		advertisingData = scanRecord;
 		advertisingDataBytes = scanRecord.getBytes();
